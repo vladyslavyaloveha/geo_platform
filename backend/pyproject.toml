@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "geo_platform"
+version = "0.1.0"
+description = "Geo Platform"
+authors = ["vladyslavyaloveha <vladyslavyaloveha@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django-environ = "^0.10.0"
+structlog = "^22.3.0"
+django-admin-interface = "^0.24.2"
+django-structlog = "^5.0.1"
+djangorestframework = "^3.14.0"
+drf-spectacular = "0.26.2"
+psycopg2-binary = "^2.9.5"
+django-filter = "^23.1"
+djangorestframework-simplejwt = "^5.2.2"
+drf-spectacular-sidecar = "^2023.4.1"
+dj-rest-auth = "^3.0.0"
+django-allauth = "^0.54.0"
+geopandas = "^0.12.2"
+sqlalchemy = "^2.0.9"
+geoalchemy2 = "^0.13.1"
+fiona = "^1.9.3"
+djangorestframework-gis = "^1.0"
+drf-extra-fields = "^3.4.1"
+
+[tool.poetry.dev-dependencies]
+Django = "^4.1.7"
+djangorestframework = "^3.14.0"
+drf-spectacular = "^0.26.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,38 @@
+---
+version: "3.9"
+
+x-common: &common
+  restart: unless-stopped
+
+
+services:
+  traefik:
+    ports:
+      - "8080:8080/tcp"
+
+  backend:
+    environment:
+      DEBUG: ${DEBUG-1}
+      DJANGO_COLLECTSTATIC: ${DJANGO_COLLECTSTATIC-1}
+      DJANGO_MIGRATE: ${DJANGO_MIGRATE-1}
+      DJANGO_SETTINGS_MODULE: geo_platform.settings.dev
+    ports:
+      - "8000:80/tcp"
+    depends_on:
+      - db
+
+  db:
+    <<: *common
+    image: "postgis/postgis:${POSTGIS_VERSION-13-3.3-alpine}"
+    environment:
+      POSTGRES_DB: ${DB_NAME?}
+      POSTGRES_USER: ${DB_USER?}
+      POSTGRES_PASSWORD: ${DB_PASSWORD?}
+    ports:
+      - "5432:5432/tcp"
+    volumes:
+      - ./backend/scripts/databases/db:/docker-entrypoint-initdb.d
+      - db:/var/lib/postgresql/data
+
+volumes:
+  db: {}

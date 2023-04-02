@@ -1,0 +1,11 @@
+# Byte-compiled & optimized & DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff
+geo_platform/static/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
